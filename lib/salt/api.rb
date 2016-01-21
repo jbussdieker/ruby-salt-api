@@ -1,7 +1,8 @@
 require "salt/api/version"
+require "salt/api/configure"
 
 module Salt
   module Api
-    # Your code goes here...
+    extend Configure
   end
 end
