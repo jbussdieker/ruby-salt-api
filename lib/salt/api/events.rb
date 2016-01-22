@@ -4,9 +4,15 @@ module Salt
   module Api
     module Events
       def events(&block)
-        raw_events do |event|
-          if event.start_with? "data: "
-            yield(JSON.parse(event.split("data: ", 2).last))
+        buffer = ""
+        raw_events do |data|
+          buffer += data
+
+          if buffer.split("\n").length > 1
+            event, buffer = buffer.split("\n", 2)
+            if event.start_with? "data: "
+              yield(JSON.parse(event.split("data: ", 2).last))
+            end
           end
         end
       end
