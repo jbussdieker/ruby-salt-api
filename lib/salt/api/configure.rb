@@ -4,7 +4,8 @@ module Salt
       VALID_OPTION_KEYS = [
         :hostname,
         :username,
-        :password
+        :password,
+        :timeout
       ].freeze
 
       attr_accessor *VALID_OPTION_KEYS

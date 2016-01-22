@@ -8,7 +8,7 @@ module Salt
         raw_events do |data|
           buffer += data
 
-          if buffer.split("\n").length > 1
+          if buffer.match("\n")
             event, buffer = buffer.split("\n", 2)
             if event.start_with? "data: "
               yield(JSON.parse(event.split("data: ", 2).last))
@@ -30,6 +30,8 @@ module Salt
             yield(chunk)
           end
         end
+      rescue Errno::ETIMEDOUT, Net::OpenTimeout => e
+        e
       end
     end
   end
