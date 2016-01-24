@@ -5,19 +5,19 @@ module Salt
   module Api
     module Client
       def client
-        Net::HTTP.new(hostname, 8000).tap do |client|
-          client.use_ssl = true
+        Net::HTTP.new(hostname, port).tap do |client|
+          client.use_ssl = use_ssl
           client.open_timeout = timeout
           # TODO: Allow specifying CA and such
           client.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
       end
 
-      def login(user, password)
+      def login
         req = Net::HTTP::Post.new("/login")
         req.set_form_data({
           'eauth' => 'pam',
-          'username' => user,
+          'username' => username,
           'password' => password
         })
         req['Accept'] = "application/x-yaml"
@@ -29,7 +29,7 @@ module Salt
       end
 
       def token
-        @token ||= login(username, password)["token"]
+        @token ||= login["token"]
       end
     end
   end
