@@ -29,7 +29,7 @@ module Salt
       end
 
       def token
-        @token ||= login["token"]
+        login["token"]
       end
     end
   end
