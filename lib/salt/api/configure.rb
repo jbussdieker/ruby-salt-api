@@ -6,6 +6,7 @@ module Salt
         :username,
         :password,
         :timeout,
+        :eauth,
         :port,
         :use_ssl
       ].freeze
@@ -16,6 +17,7 @@ module Salt
         @hostname = "salt"
         @port = 8000
         @use_ssl = true
+        @eauth = 'pam'
       end
 
       def configure
