@@ -29,6 +29,7 @@ Salt::Api.configure do |config|
   config.hostname = "salt.example.com"
   config.username = "user1"
   config.password = "password"
+  config.eauth = "ldap"
 end
 
 puts Salt::Api.minions

@@ -16,7 +16,7 @@ module Salt
       def login
         req = Net::HTTP::Post.new("/login")
         req.set_form_data({
-          'eauth' => 'pam',
+          'eauth' => eauth,
           'username' => username,
           'password' => password
         })
