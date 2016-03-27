@@ -4,6 +4,7 @@ require "salt/api/client"
 require "salt/api/minions"
 require "salt/api/events"
 require "salt/api/run"
+require "salt/api/jobs"
 
 module Salt
   module Api
@@ -12,5 +13,6 @@ module Salt
     extend Minions
     extend Events
     extend Run
+    extend Jobs
   end
 end
