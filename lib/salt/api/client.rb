@@ -1,5 +1,6 @@
 require 'net/http'
 require 'yaml'
+require 'openssl'
 
 module Salt
   module Api
