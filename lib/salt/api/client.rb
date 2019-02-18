@@ -8,6 +8,7 @@ module Salt
         Net::HTTP.new(hostname, port).tap do |client|
           client.use_ssl = use_ssl
           client.open_timeout = timeout
+          client.read_timeout = read_timeout
           # TODO: Allow specifying CA and such
           client.verify_mode = OpenSSL::SSL::VERIFY_NONE
         end
