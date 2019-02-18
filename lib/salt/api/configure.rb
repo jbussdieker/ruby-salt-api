@@ -6,6 +6,7 @@ module Salt
         :username,
         :password,
         :timeout,
+        :read_timeout,
         :eauth,
         :port,
         :use_ssl
